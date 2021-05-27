@@ -1,13 +1,17 @@
 ## 麻酱凉皮
 
 ## 资料
-https://spring.io/guides
-https://spring.io/guides/gs/serving-web-content/
-https://elasticsearch.cn/explore
+[Spring文档](https://spring.io/guides)
+[Spring Web](https://spring.io/guides/gs/serving-web-content/)
+[es社区](https://elasticsearch.cn/explore)
+
 BootStrap组件
-https://v3.bootcss.com/components/
+[Bootstrap](https://v3.bootcss.com/components/)
 
 Create an OAuth App
-https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app
+[Github OAuth](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app)
 
+[okHttp](https://square.github.io/okhttp/)
 ## 工具
+[Git](https://git-scm.com/download)
+[Visual Paradigm](https://www.visual-paradigm.com)
