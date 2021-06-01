@@ -25,8 +25,10 @@ public class IndexController {
                 cookies) {
             if (cookie.getName().equals("token")) {
                 String token = cookie.getValue();
+                // 如果database中能找到该token的user，那么实例化为user对象，否则user=null
                 User user = userMapper.findByToken(token);
                 if (user != null) {
+                    // 如果验证成功，设置session，这样index.html中才会显示  “我”
                     request.getSession().setAttribute("user", user);
                 }
                 break;

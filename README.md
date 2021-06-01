@@ -22,7 +22,7 @@
 ```sql 
 create table USER
 (
-	ID INT auto_increment,
+	ID INT auto_increment NOT NULL,
 	ACCOUNT_ID VARCHAR(100),
 	NAME VARCHAR(50),
 	TOKEN CHAR(36),
