@@ -17,6 +17,7 @@
 ## 工具
 [Git](https://git-scm.com/download)
 [Visual Paradigm](https://www.visual-paradigm.com)
+[Flyway拿到maven依赖](https://flywaydb.org/documentation/getstarted/firststeps/maven)
 
 ## 脚本
 ```sql 
@@ -31,7 +32,11 @@ create table USER
 	constraint USER_PK
 		primary key (ID)
 );
-
-
+```
+```bash
+mvn flyway:migrate   # 将V2__ADD_BIO_TO_USER_TABLE.sql中的修改同步到一个数据库中，多人合作比较方便
 
 ```
+
+## 笔记
+[bootstrap的全局样式](https://v3.bootcss.com/css/) :设置边距等等
