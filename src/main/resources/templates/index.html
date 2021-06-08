@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>麻酱凉皮</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -12,7 +12,8 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">麻酱凉皮</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -29,6 +30,9 @@
                 <button type="submit" class="btn btn-default">搜索</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
+                <li th:if="${session.user != null}">
+                    <a href="/publish">发布</a>
+                </li>
                 <li class="dropdown" th:if="${session.user != null}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false" th:text="${session.user.getName()}"><span class="caret"></span></a>
@@ -38,7 +42,9 @@
                         <li><a href="#">退出登录</a></li>
                     </ul>
                 </li>
-                <li th:if="${session.user == null}"><a href="https://github.com/login/oauth/authorize?client_id=d8c0a031f92219985247&redirect_uri=http://localhost:8887/callback&scope=user&state=1">登录</a></li>
+                <li th:if="${session.user == null}">
+                    <a href="https://github.com/login/oauth/authorize?client_id=d8c0a031f92219985247&redirect_uri=http://localhost:8887/callback&scope=user&state=1">登录</a>
+                </li>
                 <!-- th:if: 如果值是true，则打印整个节点-->
             </ul>
         </div>

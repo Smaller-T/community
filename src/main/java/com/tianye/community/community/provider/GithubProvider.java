@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 @Component   //紧紧的将当前类初始化到Spring容器的上下文                  //@Controller 将当前类作为路由API的一个承载者
-//Component注释的类，自动实例化放到池子里面，当我们用的时候，可以直接拿出来用
+// Component注释的类，自动实例化放到池子里面，当我们用的时候，可以直接拿出来用
 public class GithubProvider {
     public String getAccessToken(AccessTokenDTO accessTokenDTO) {
         // okHttp Post to a Server
@@ -19,9 +19,10 @@ public class GithubProvider {
                 .url("https://github.com/login/oauth/access_token")
                 .post(body)
                 .build();
-        try (Response response = client.newCall(request).execute()) {
+        try {
+            Response response = client.newCall(request).execute();
             String string = response.body().string();
-            //string 示例  access_token=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&scope=user&token_type=bearer
+            // access_token=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&scope=user&token_type=bearer
             return string.split("&")[0].split("=")[1];
         } catch (IOException e) {
             e.printStackTrace();
@@ -34,8 +35,12 @@ public class GithubProvider {
         // get a URL
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url("https://api.github.com/user?access_token=" + accessToken)
+                .url("https://api.github.com/user")
+                .header("Authorization", "token " + accessToken)
                 .build();
+//        Request request = new Request.Builder()
+//                .url("https://api.github.com/user?access_token=" + accessToken)
+//                .build();
         try {
             Response response = client.newCall(request).execute();
             String string = response.body().string();
@@ -44,9 +49,7 @@ public class GithubProvider {
             return githubUser;
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("print getUser error");
         }
         return null;
-
     }
 }

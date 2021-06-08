@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 
 @Controller
 //意思是允许这个类去接收前端的 一个请求，将IndexController识别为Spring的一个bean
@@ -21,22 +22,21 @@ public class IndexController {
         // httpServletRequest 是从浏览器请求数据
         // httpServletResponse 是将数据返回到浏览器
         Cookie[] cookies = request.getCookies();   //cookie都是K，V对保存的
-        for (Cookie cookie :
-                cookies) {
-            if (cookie.getName().equals("token")) {
-                String token = cookie.getValue();
-                // 如果database中能找到该token的user，那么实例化为user对象，否则user=null
-                User user = userMapper.findByToken(token);
-                if (user != null) {
-                    // 如果验证成功，设置session，这样index.html中才会显示  “我”
-                    request.getSession().setAttribute("user", user);
+        System.out.println("cookies: " + Arrays.toString(cookies));
+        if (cookies != null && cookies.length != 0) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("token")) {
+                    String token = cookie.getValue();
+                    // 如果database中能找到该token的user，那么实例化为user对象，否则user=null
+                    User user = userMapper.findByToken(token);
+                    if (user != null) {
+                        // 如果验证成功，设置session，这样index.html中才会显示  “我”
+                        request.getSession().setAttribute("user", user);
+                    }
+                    break;
                 }
-                break;
             }
         }
-
-
-
         return "index";
     }
 //    public String hello(@RequestParam(name = "name") String name, Model model) {

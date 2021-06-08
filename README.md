@@ -16,8 +16,12 @@
 [Spring embedded-database](https://docs.spring.io/spring-boot/docs/2.0.0.RC1/reference/htmlsingle/#boot-features-embedded-database-support)
 ## 工具
 [Git](https://git-scm.com/download)
+
 [Visual Paradigm](https://www.visual-paradigm.com)
+
 [Flyway拿到maven依赖](https://flywaydb.org/documentation/getstarted/firststeps/maven)
+
+[Lombok](https://projectlombok.org/) 点击install，选择maven，直接添加maven依赖
 
 ## 脚本
 ```sql 
@@ -33,9 +37,10 @@ create table USER
 		primary key (ID)
 );
 ```
-```bash
-mvn flyway:migrate   # 将V2__ADD_BIO_TO_USER_TABLE.sql中的修改同步到一个数据库中，多人合作比较方便
 
+```bash
+# 将V*__ADD_BIO_TO_USER_TABLE.sql中的修改同步到一个数据库中，多人合作比较方便
+mvn flyway:migrate   
 ```
 
 ## 笔记
